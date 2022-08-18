@@ -14,11 +14,19 @@
         integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        const socket=io("http://localhost:8080");
+        const socket = io("http://localhost:8080");
 
-        socket.on("mensaje-bienvenida",(data)=>{
+        socket.on("mensaje-bienvenida", (data) => {
             console.log(data);
         })
+
+        setTimeout(() => {
+            socket.emit("mensaje-cliente", {
+                msg: "setTimeout",
+                fecha: new Date(),
+            });
+        }, 2000)
+
     </script>
 </body>
 
